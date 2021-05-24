@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-# from naver_google_crawling import naver,google
+from naver_google_crawling import naver,google
 form_class = uic.loadUiType(r"D:\crawling\crawling.ui")[0]
 
 class WindowClass(QMainWindow, form_class) :
@@ -9,9 +9,6 @@ class WindowClass(QMainWindow, form_class) :
     
         super().__init__()
         self.setupUi(self)
-        
-        # self.work = Worker()
-
         self.check = ''
         self.keyword = ''''''
         self.radioButton.clicked.connect(self.radio_naver)
