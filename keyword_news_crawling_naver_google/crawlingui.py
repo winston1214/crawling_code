@@ -2,8 +2,8 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from naver_google_crawling import naver,google
-form_class = uic.loadUiType(r"D:\crawling\crawling.ui")[0]
-
+# form_class = uic.loadUiType(r"D:\crawling\crawling.ui")[0]
+form_class = uic.loadUiType("crawling.ui")[0]
 class WindowClass(QMainWindow, form_class) :
     def __init__(self):
     
