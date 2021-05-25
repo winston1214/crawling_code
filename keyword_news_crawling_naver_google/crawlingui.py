@@ -1,3 +1,4 @@
+#@Author winston1214(YoungMin KIM)
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
@@ -9,29 +10,39 @@ class WindowClass(QMainWindow, form_class) :
     
         super().__init__()
         self.setupUi(self)
+
         self.check = ''
         self.keyword = ''''''
-        self.radioButton.clicked.connect(self.radio_naver)
-        self.radioButton2.clicked.connect(self.radio_google)
-        
+        self.op = ''
+        self.checkBox.clicked.connect(self.check_naver)
+        self.checkBox2.clicked.connect(self.check_google)
+        self.radioButton3.clicked.connect(self.AND_check)
+        self.radioButton4.clicked.connect(self.OR_check)
+        self.radioButton5.clicked.connect(self.None_check)
         self.Search.clicked.connect(self.crawling)
 
-    def radio_naver(self):
-        self.check = 'naver'
-        
-    def radio_google(self):
-        self.check = 'google'
-        
-    def input_keyword(self):
-        self.keyword = self.textEdit.toPlainText()
+    def check_naver(self):
+        self.check += 'naver'
+    def check_google(self):
+        self.check += 'google'
+    def AND_check(self):
+        self.op = 'AND'
+    def None_check(self):
+        self.op = 'None'
+    def OR_check(self):
+        self.op = 'OR'
     def crawling(self):
         self.keyword = self.textEdit.toPlainText()
         if self.check == 'naver':
-            naver(self.keyword)
+            naver(self.keyword,self.op)
+        elif self.check == 'google':
+            google(self.keyword,self.op)
         else:
-            google(self.keyword)
+            naver(self.keyword,self.op)
+            google(self.keyword,self.op)
 if __name__ == "__main__" :
     app = QApplication(sys.argv)
     myWindow = WindowClass()
     myWindow.show()
+    app.exec_()
     app.exec_()
